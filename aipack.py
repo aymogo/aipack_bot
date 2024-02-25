@@ -84,7 +84,7 @@ def select_lang(update: Update, context: CallbackContext) -> int:
         text="GOOD JOB!!!",
     )
     print(text)
-    update.message.reply_text("Kompaniyanindin atin jazip qaldirin")
+    update.message.reply_text("Kompaniyanindin atin jazip qaldirin", reply_markup=ReplyKeyboardRemove())
 
     return COMPANY_NAME
 
@@ -115,7 +115,7 @@ def phone_number(update: Update, context: CallbackContext) -> int:
     text = update.message.contact.phone_number
     print(type(text), text)
     context.user_data["phone_number"] = text
-    update.message.reply_text(f"Muraajatiniz tez arada korip shigiladi")
+    update.message.reply_text(f"Muraajatiniz tez arada korip shigiladi", reply_markup=ReplyKeyboardRemove())
 
     return END
 
