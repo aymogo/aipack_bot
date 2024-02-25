@@ -54,14 +54,16 @@ def start(update: Update, context: CallbackContext) -> int:
         chat_id=update.effective_chat.id,
         text="Хуш келипсиз\nХош келипсиз\nДобро пожаловать",
     )
-    update.message.reply_text("Тилни танланг", reply_markup=lang_markup)
 
     try:
         if context.user_data["lang_code"]:
+            print("COMPANY_NAME")
+            update.message.reply_text("Kompaniyanindin atin jazip qaldirin")
             return COMPANY_NAME
     except:
+        print("SELECT_LANG")
+        update.message.reply_text("Тилни танланг", reply_markup=lang_markup)
         return SELECT_LANG
-    
 
 
 def select_lang(update: Update, context: CallbackContext) -> int:
@@ -76,17 +78,13 @@ def select_lang(update: Update, context: CallbackContext) -> int:
     else:
         update.message.reply_text("Тилни танланг", reply_markup=lang_markup)
         return SELECT_LANG
-    
-    
+
     context.bot.send_message(
         chat_id=update.effective_chat.id,
         text="GOOD JOB!!!",
-    )   
-    print(text)
-    update.message.reply_text(
-        "Kompaniyanindin atin jazip qaldirin"
     )
-
+    print(text)
+    update.message.reply_text("Kompaniyanindin atin jazip qaldirin")
 
     return COMPANY_NAME
 
